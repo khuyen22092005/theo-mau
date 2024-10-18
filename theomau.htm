@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVASCRIPT và CSS</title>
+    <style>
+        #NoiDung {
+            width: 500px;
+            height: 100px;
+            border: 2px solid black;
+            padding: 10px;
+        }
+        .button-container button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>JAVASCRIPT và CSS</h2>
+
+    <!-- Các nút màu -->
+    <div class="button-container">
+        <button onclick="changeColor('blue')">Xanh</button>
+        <button onclick="changeColor('red')">Đỏ</button>
+        <button onclick="changeColor('yellow')">Vàng</button>
+        <button onclick="changeColor('')">Không màu</button>
+    </div>
+
+    <!-- Thay đổi cỡ chữ -->
+    <div class="button-container">
+        <select id="fontSize" onchange="changeFontSize()">
+            <option value="20px">20px</option>
+            <option value="25px">25px</option>
+            <option value="30px">30px</option>
+        </select>
+        <button onclick="changeFontSize()">Đặt cỡ chữ</button>
+    </div>
+
+    <!-- Thay đổi chiều cao -->
+    <div class="button-container">
+        <select id="height" onchange="changeHeight()">
+            <option value="100px">100px</option>
+            <option value="150px">150px</option>
+            <option value="200px">200px</option>
+        </select>
+        <button onclick="changeHeight()">Đặt chiều cao</button>
+        <button onclick="increaseHeight()">Tăng chiều cao</button>
+    </div>
+
+    <!-- Nạp CSS tiêu đề và nội dung -->
+    <div class="button-container">
+        <button onclick="applyHeaderCSS()">Nạp css tiêu đề</button>
+        <button onclick="applyContentCSS()">Nạp css nội dung</button>
+    </div>
+
+    <!-- Nội dung -->
+    <div id="NoiDung">#NoiDung: Xin chào các bạn!</div>
+
+    <script>
+        // Hàm thay đổi màu nền
+        function changeColor(color) {
+            document.getElementById('NoiDung').style.backgroundColor = color;
+        }
+
+        // Hàm thay đổi cỡ chữ
+        function changeFontSize() {
+            const size = document.getElementById('fontSize').value;
+            document.getElementById('NoiDung').style.fontSize = size;
+        }
+
+        // Hàm thay đổi chiều cao
+        function changeHeight() {
+            const height = document.getElementById('height').value;
+            document.getElementById('NoiDung').style.height = height;
+        }
+
+        // Hàm tăng chiều cao
+        function increaseHeight() {
+            const content = document.getElementById('NoiDung');
+            const currentHeight = parseInt(window.getComputedStyle(content).height);
+            content.style.height = (currentHeight + 20) + 'px';
+        }
+
+        // Hàm nạp CSS tiêu đề
+        function applyHeaderCSS() {
+            document.querySelector('h2').style.color = 'green';
+            document.querySelector('h2').style.fontWeight = 'bold';
+        }
+
+        // Hàm nạp CSS nội dung
+        function applyContentCSS() {
+            const content = document.getElementById('NoiDung');
+            content.style.border = '3px dashed blue';
+            content.style.padding = '20px';
+        }
+    </script>
+</body>
+</html>
